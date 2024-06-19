@@ -66,5 +66,5 @@ api.add_resource(Predict, '/classify')
 
 PORT = 5000
 
-print("Public URL:", tunnel.public_url)
+print("Public URL:")
 app.run(host='0.0.0.0', port=5000)
