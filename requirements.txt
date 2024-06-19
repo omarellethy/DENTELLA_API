@@ -1,0 +1,6 @@
+transformers
+tensorflow
+numpy
+Pillow
+ipywidgets
+gradio
