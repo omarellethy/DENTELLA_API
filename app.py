@@ -1,13 +1,27 @@
-
 import subprocess
 import sys
 
-def install_flask():
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "flask"])
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 if __name__ == "__main__":
-    install_flask()
-    print("Flask has been installed successfully.")
+    packages = [
+        "flask",
+        "flask_restful",
+        "keras",
+        "pillow",  # PIL is now Pillow
+        "numpy",
+        "python-dotenv",
+        "pyngrok"
+    ]
+
+    for package in packages:
+        try:
+            install(package)
+            print(f"{package} has been installed successfully.")
+        except subprocess.CalledProcessError:
+            print(f"Failed to install {package}")
+
 
 
 
