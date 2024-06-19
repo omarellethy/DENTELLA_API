@@ -1,3 +1,18 @@
+
+import subprocess
+import sys
+
+def install_flask():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "flask"])
+
+if __name__ == "__main__":
+    install_flask()
+    print("Flask has been installed successfully.")
+
+
+
+
+
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 import keras
