@@ -62,14 +62,9 @@ app = Flask(__name__)
 api = Api(app)
 api.add_resource(Predict, '/classify')
 
-NGROK_AUTH = os.getenv("NGROK_AUTH")
-if not NGROK_AUTH:
-    raise ValueError("NGROK_AUTH environment variable not set")
 
-print(f"NGROK_AUTH: {NGROK_AUTH}")  # Debug print to verify the auth token
+
 PORT = 5000
 
-ngrok.set_auth_token(NGROK_AUTH)
-tunnel = ngrok.connect(PORT, domain="exciting-mammoth-carefully.ngrok-free.app")
 print("Public URL:", tunnel.public_url)
 app.run(host='0.0.0.0', port=5000)
