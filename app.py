@@ -44,7 +44,7 @@ classes = [
     "Your Teeth are Good & You Don't Need To Visit Doctor"
 ]
 
-model = keras.models.load_model("APP-host\models\imageclassifier.h5")
+model = keras.models.load_model("model.pkl")
 
 def predict(img):
     img = img.resize((224, 224))
