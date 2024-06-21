@@ -1,14 +1,3 @@
-import subprocess
-import sys
-from flask import Flask, request, jsonify
-from flask_restful import Resource, Api
-import keras
-from PIL import Image
-import numpy as np
-from dotenv import load_dotenv
-from pyngrok import ngrok
-import os
-
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
@@ -29,6 +18,27 @@ if __name__ == "__main__":
             print(f"{package} has been installed successfully.")
         except subprocess.CalledProcessError:
             print(f"Failed to install {package}")
+
+
+
+
+
+
+
+
+
+import subprocess
+import sys
+from flask import Flask, request, jsonify
+from flask_restful import Resource, Api
+import keras
+from PIL import Image
+import numpy as np
+from dotenv import load_dotenv
+from pyngrok import ngrok
+import os
+
+
 
 load_dotenv()
 
