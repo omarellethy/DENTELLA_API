@@ -1,28 +1,3 @@
-
-    for package in packages:
-        try:
-            install(package)
-            print(f"{package} has been installed successfully.")
-        except subprocess.CalledProcessError:
-            print(f"Failed to install {package}")
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-if __name__ == "__main__":
-    packages = [
-        "flask",
-        "flask_restful",
-        "keras",
-        "pillow",
-        "numpy",
-        "python-dotenv",
-        "pyngrok"
-    ]
-
-
-
-
 import subprocess
 import sys
 from flask import Flask, request, jsonify
@@ -33,8 +8,6 @@ import numpy as np
 from dotenv import load_dotenv
 from pyngrok import ngrok
 import os
-
-
 
 load_dotenv()
 
