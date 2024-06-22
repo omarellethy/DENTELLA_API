@@ -9,6 +9,30 @@ from dotenv import load_dotenv
 from pyngrok import ngrok
 import os
 
+
+
+    for package in packages:
+        try:
+            install(package)
+            print(f"{package} has been installed successfully.")
+        except subprocess.CalledProcessError:
+            print(f"Failed to install {package}")
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+if __name__ == "__main__":
+    packages = [
+        "flask",
+        "flask_restful",
+        "keras",
+        "pillow",
+        "numpy",
+        "python-dotenv",
+        "pyngrok"
+    ]
+
+
 load_dotenv()
 
 classes = [
@@ -46,7 +70,13 @@ app = Flask(__name__)
 api = Api(app)
 api.add_resource(Predict, '/classify')
 
-PORT = 5000
+if __name__ == "__main__":
+    # Use ngrok to expose the Flask app to the internet
+    public_url = ngrok.connect(port=5000)
+    print("Public URL:", public_url)
 
-print("Public URL:")
-app.run(host='0.0.0.0', port=PORT)
+    # Use Gunicorn as the production WSGI server
+    subprocess.Popen(["gunicorn", "-b", "0.0.0.0:5000", "app:app"])
+
+    # Run the Flask app with the development server
+    app.run(debug=False)
